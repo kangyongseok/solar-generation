@@ -1,15 +1,17 @@
 "use client";
 
-function RegisterForm() {
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+import { type FormEvent } from "react";
 
-    const responst = await fetch(`${process.env.NEXT_PUBLIC_URL}/api`, {
+function RegisterForm() {
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    const target = e.target as HTMLFormElement;
+    await fetch(`${process.env.NEXT_PUBLIC_URL}/api`, {
       method: "POST",
       body: JSON.stringify({
-        name: e.target.name.value,
-        placeNumber: e.target.placeNumber.value,
-        phone: e.target.phone.value,
+        name: target.username.value,
+        placeNumber: target.placeNumber.value,
+        phone: target.phone.value,
       }),
     });
   };
@@ -18,12 +20,12 @@ function RegisterForm() {
     <section className="p-5">
       <form onSubmit={handleSubmit}>
         <div className="mb-6">
-          <label htmlFor="name" className="mb-2 block text-sm font-medium">
+          <label htmlFor="username" className="mb-2 block text-sm font-medium">
             이름
           </label>
           <input
             type="text"
-            id="name"
+            id="username"
             className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
             placeholder="홍길동"
             required
