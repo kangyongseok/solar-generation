@@ -2,7 +2,7 @@ import { TbSolarPanel2 } from "react-icons/tb";
 import RegisterForm from "../components/RegisterForm";
 
 async function getData() {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api`, {
+  const response = await fetch(`${process.env.PUBLIC_URL}/api`, {
     next: { revalidate: 60 },
   });
   const data = await response.json();
