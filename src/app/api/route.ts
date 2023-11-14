@@ -38,6 +38,6 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   const res = await request.json();
   const sheet = doc.sheetsByIndex[1];
-  sheet.addRow(res);
+  sheet.addRow(await res);
   return Response.json({});
 }
