@@ -36,8 +36,14 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  const res = await request.json();
-  const sheet = doc.sheetsByIndex[1];
-  sheet.addRow(await res);
-  return Response.json({});
+  try {
+    const res = await request.json();
+    const sheet = doc.sheetsByIndex[1];
+    await sheet.addRow(res); // 기다림을 표현하기 위해 await 사용
+    return Response.json({});
+  } catch (error) {
+    console.error("Error while processing the request:", error);
+    // 에러 처리 로직 추가
+    return Response.json({ error: "An error occurred" }, { status: 500 });
+  }
 }
