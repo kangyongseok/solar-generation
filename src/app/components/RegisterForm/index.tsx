@@ -13,7 +13,7 @@ function RegisterForm() {
         placeNumber: target.placeNumber.value,
         phone: target.phone.value,
       }),
-    });
+    }).then(() => {});
   };
 
   return (
