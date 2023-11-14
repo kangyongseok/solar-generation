@@ -1,5 +1,6 @@
 import { GoogleSpreadsheet } from "google-spreadsheet";
 import { JWT } from "google-auth-library";
+import { type NextRequest, NextResponse } from "next/server";
 
 const SCOPES = [
   "https://www.googleapis.com/auth/spreadsheets",
@@ -31,19 +32,19 @@ const fetchGoogleSheetRows = async () => {
   }));
 };
 
-export async function GET(request: Request) {
-  return Response.json(await fetchGoogleSheetRows());
+export async function GET() {
+  return NextResponse.json(await fetchGoogleSheetRows());
 }
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     const res = await request.json();
     const sheet = doc.sheetsByIndex[1];
     await sheet.addRow(res); // 기다림을 표현하기 위해 await 사용
-    return Response.json({});
+    return NextResponse.json({});
   } catch (error) {
     console.error("Error while processing the request:", error);
     // 에러 처리 로직 추가
-    return Response.json({ error: "An error occurred" }, { status: 500 });
+    return NextResponse.json({ error: "An error occurred" }, { status: 500 });
   }
 }
