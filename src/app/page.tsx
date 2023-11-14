@@ -1,5 +1,5 @@
 import { TbSolarPanel2 } from "react-icons/tb";
-import RegisterForm from "./components/RegisterForm";
+import RegisterForm from "../components/RegisterForm";
 
 async function getData() {
   const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api`, {
