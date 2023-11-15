@@ -2,6 +2,9 @@ import { GoogleSpreadsheet } from "google-spreadsheet";
 import { JWT } from "google-auth-library";
 import { type NextRequest, NextResponse } from "next/server";
 
+const TITLE = "title";
+const SUB_TITLE = "subTitle";
+
 const SCOPES = [
   "https://www.googleapis.com/auth/spreadsheets",
   "https://www.googleapis.com/auth/drive.file",
@@ -28,10 +31,33 @@ const fetchGoogleSheetRows = async () => {
   const googlesheet = await getGoogleSheet();
   const sheeByIdElement = googlesheet.sheetsById[0];
   const rows = await sheeByIdElement.getRows();
-  return rows.map((row) => ({
-    title: row.get("title"),
-    subTitle: row.get("subTitle"),
-  }));
+
+  const data = {
+    section01: {
+      title: rows[0].get(TITLE),
+      subTitle: rows[0].get(SUB_TITLE),
+    },
+    section02: {
+      title: rows[1].get(TITLE),
+      subTitle: rows[1].get(SUB_TITLE),
+    },
+    section03: {
+      title: rows[2].get(TITLE),
+      subTitle: rows[2].get(SUB_TITLE),
+    },
+    section04: {
+      title: rows[3].get(TITLE),
+      subTitle: rows[3].get(SUB_TITLE),
+    },
+    section05: {
+      title: rows[4].get(TITLE),
+      content01: rows[4].get(SUB_TITLE).split("\n"),
+      content02: rows[5].get(SUB_TITLE).split("\n"),
+      content03: rows[6].get(SUB_TITLE).split("\n"),
+    },
+  };
+  console.log(data);
+  return data;
 };
 
 export async function GET() {
