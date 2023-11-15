@@ -1,19 +1,19 @@
 import { TbSolarPanel2 } from "react-icons/tb";
-import { GiReceiveMoney } from "react-icons/gi";
-import { FaSolarPanel } from "react-icons/fa";
-import { MdEnergySavingsLeaf } from "react-icons/md";
+// import { GiReceiveMoney } from "react-icons/gi";
+// import { FaSolarPanel } from "react-icons/fa";
+// import { MdEnergySavingsLeaf } from "react-icons/md";
 import RegisterForm from "../components/RegisterForm";
 
-async function getData() {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api`, {
-    next: { revalidate: 60 },
-  });
-  const data = await response.json();
-  return data;
-}
+// async function getData() {
+//   const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api`, {
+//     next: { revalidate: 60 },
+//   });
+//   const data = await response.json();
+//   return data;
+// }
 
 export default async function Home() {
-  const data = await getData();
+  // const data = await getData();
 
   return (
     <div className="break-keep">
@@ -25,7 +25,7 @@ export default async function Home() {
           <span>Solar</span>
         </h1>
       </header>
-      <section className="flex h-screen flex-col items-center justify-center px-6 text-center">
+      {/* <section className="flex h-screen flex-col items-center justify-center px-6 text-center">
         <p className="mb-6 text-4xl font-semibold leading-normal text-gray-900 md:text-6xl lg:text-7xl">
           {data.section01.title}
         </p>
@@ -100,7 +100,7 @@ export default async function Home() {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
       <RegisterForm />
     </div>
   );
