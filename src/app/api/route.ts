@@ -35,19 +35,19 @@ const fetchGoogleSheetRows = async () => {
   const data = {
     section01: {
       title: rows[0].get(TITLE),
-      subTitle: rows[0].get(SUB_TITLE),
+      subTitle: rows[0].get(SUB_TITLE).split("\n"),
     },
     section02: {
       title: rows[1].get(TITLE),
-      subTitle: rows[1].get(SUB_TITLE),
+      subTitle: rows[1].get(SUB_TITLE).split("\n"),
     },
     section03: {
-      title: rows[2].get(TITLE),
-      subTitle: rows[2].get(SUB_TITLE),
+      title: rows[2].get(TITLE).split("\n"),
+      subTitle: rows[2].get(SUB_TITLE).split("\n"),
     },
     section04: {
       title: rows[3].get(TITLE),
-      subTitle: rows[3].get(SUB_TITLE),
+      subTitle: rows[3].get(SUB_TITLE).split("\n"),
     },
     section05: {
       title: rows[4].get(TITLE),
