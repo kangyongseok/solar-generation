@@ -13,7 +13,11 @@ function RegisterForm() {
         placeNumber: target.placeNumber.value,
         phone: target.phone.value,
       }),
-    }).then(() => {});
+    }).then(() => {
+      target.username.value = "";
+      target.placeNumber.value = "";
+      target.phone.value = "";
+    });
   };
 
   return (
@@ -72,7 +76,7 @@ function RegisterForm() {
           </div>
           <button
             type="submit"
-            className="w-full rounded-lg bg-orange-500 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 sm:w-auto"
+            className="w-full rounded-lg bg-orange-500 px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4  sm:w-auto"
           >
             제출하기
           </button>
