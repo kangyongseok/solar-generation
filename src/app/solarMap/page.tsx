@@ -1,3 +1,4 @@
+/* eslint-disable no-new */
 "use client";
 
 import Script from "next/script";
@@ -19,7 +20,13 @@ function SolarMap() {
     };
 
     const map = new window.naver.maps.Map(mapElement.current, mapOptions);
-    // eslint-disable-next-line no-new
+    new window.naver.maps.Circle({
+      map,
+      center: location,
+      radius: 200,
+      fillColor: "crimson",
+      fillOpacity: 0.2,
+    });
     new window.naver.maps.Marker({
       position: location,
       map,
