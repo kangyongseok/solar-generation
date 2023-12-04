@@ -23,7 +23,14 @@ function SolarMap() {
     new window.naver.maps.Circle({
       map,
       center: location,
-      radius: 200,
+      radius: 500, // 단위는 미터
+      fillColor: "yellow",
+      fillOpacity: 0.2,
+    });
+    new window.naver.maps.Circle({
+      map,
+      center: location,
+      radius: 200, // 단위는 미터
       fillColor: "crimson",
       fillOpacity: 0.2,
     });
